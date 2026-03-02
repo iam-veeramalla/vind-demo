@@ -31,7 +31,9 @@ jobs:
       # ---------- Create vcluster (VIND mode) ----------
       - name: Create vcluster
         run: |
+          vcluster use driver docker
           vcluster create demo-cluster
+          
 
       # ---------- Deploy ConfigMap ----------
       - name: Apply ConfigMap
