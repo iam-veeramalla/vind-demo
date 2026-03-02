@@ -13,14 +13,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # ---------- Install Docker ----------
-      - name: Install Docker
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y docker.io
-          sudo systemctl start docker
-          sudo usermod -aG docker $USER
-
       # ---------- Install kubectl ----------
       - name: Install kubectl
         uses: azure/setup-kubectl@v4
@@ -36,7 +28,7 @@ jobs:
           sudo install -c -m 0755 vcluster /usr/local/bin
           rm -f vcluster
 
-      # ---------- Create vcluster ----------
+      # ---------- Create vcluster (VIND mode) ----------
       - name: Create vcluster
         run: |
           vcluster create demo-cluster --wait
